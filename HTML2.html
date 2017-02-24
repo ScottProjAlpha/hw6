@@ -1,0 +1,96 @@
+<html> 
+   
+<title>
+    Homework6
+</title>
+    <link href="CSS2.css" rel="stylesheet" type="text/css" media="screen" />
+    <h1><legend>Pizza Ordering Please Choose your Topping!!!!!</legend></h1>
+
+<e> by Project-Alpha+ </e>
+
+<head>   
+<script type="text/javascript">
+    var countA = 0;
+    var countB = 0;
+	var countC = 0;
+    //var countA = 2;
+    function Pepperoni()
+    {countA=countA+4;document.getElementById('para1').innerHTML = "$"+countA;}
+   // var countB = 1.5;
+   function Hawaiian()
+    {countB=countB+2.5;document.getElementById('para2').innerHTML = "$"+countB;}
+    //var countC = 2.5
+    function Canadian()
+    {countC=countC+3.5; document.getElementById('para3').innerHTML = "$"+countC;}
+    function total()
+    {var total = 0;total = countA+countB+countC;document.getElementById('total').innerHTML = total;
+    var subtotal = 0;
+		subtotal =countA+countB+countC;
+        tax = subtotal*0.12;
+        taxx = tax.toPrecision(1);
+        sum = subtotal + tax
+		document.getElementById('subtotal').innerHTML = "$"+subtotal;
+        document.getElementById('taxx').innerHTML = "$"+tax;
+        document.getElementById('sum').innerHTML = "$"+sum;}
+    function Clear()
+	{countA = 0; countB= 0; countC=0;document.getElementById('para1').innerHTML = 0;document.getElementById('para2').innerHTML = 0;
+	document.getElementById('para3').innerHTML = 0;
+	document.getElementById('total').innerHTML = 0;}
+  /*  function total()
+    {
+		var subtotal = 0;
+		subtotal =countA+countB+countC;
+        tax = subtotal*0.1;
+        taxx = tax.toPrecision(1);
+        sum = subtotal + tax
+		document.getElementById('subtotal').innerHTML = "$"+subtotal;
+        document.getElementById('taxx').innerHTML = "$"+tax;
+        document.getElementById('sum').innerHTML = "$"+sum;
+	}*/
+   function Order()
+	{
+		var topping = document.getElementById("order").value;
+		var Order = topping.split(",");
+		
+		for (var i = 0; i < Order.length; i++){
+		Order[i] = Order[i].trim();
+		}
+		
+		if(Order== "Pepperoni"){
+			Pepperoni();
+		}
+		else if(Order == "Hawaiian"){
+			Hawaiian();
+		}
+		else if(Order == "Canadian"){
+			Canadian();
+		}
+	}
+   </script>
+</head>
+
+<body bgcolor="#FFF999">
+        <title>Menu</title>
+       <p class="topping"><l> Pepperoni Toppings</l><button onclick="Pepperoni()">$4</button><img src="http://i.imgur.com/ZIM69vX.jpg" title="source: imgur.com" /> <f id="para1">0</f></p>
+        <p class="topping"><l> Hawaiian Toppings</l> <button onclick="Hawaiian()">$2.5</button> <img src="http://i.imgur.com/ZGc6z7V.jpg" title="source: imgur.com" /><f id="para2">0</f> </p>
+        <p class="topping"><l> Canadian Toppings</l><button onclick="Canadian()">$3.5</button><img src="http://i.imgur.com/twKXatU.jpg" title="source: imgur.com" /><f id="para3">0</f></p>
+        <p class="topping"><l> Total Sum</l> <f id="total">0</f><button onclick="total()">Update</button> </p>
+        <p class="clear"> <button onclick="Clear()">Clear</button></p>
+<ul>
+       <h3> <li>Please Type in the ingredient EXACTY</li></h3>       
+       <h2>
+        <li>Pepperoni</li>
+        <li>Hawaiian</li>
+		<li>Canadian</li>
+       </h2>
+       </ul>
+<input id="order"/><button onclick="Order()">Submit</button>
+       <h4> <p class="receipt">Receipt</p>
+        <p class="topping"><a> Subtotal</a> <a id="subtotal">$0</a><a class="hide">_________</a>
+        <p class="topping"><a> Tax [12%]</a> <a id="taxx">$0</a><a class="hide">__________</a>
+        <p class="topping"><a> Total</a> <a id="sum">$0</a><button onclick="total()">Update</button> </p>
+        <p class="clear"> <button onclick="Clear()">Clear</button></p>
+        </h4>
+    </body>
+</body>
+</html>
